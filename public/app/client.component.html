@@ -4,6 +4,37 @@
       <a [routerLink]="['/login']">Sign In</a>
       <a [routerLink]="['/signup']">Sign Up</a>
   </nav>
+  <h4>
+    Sample app made by Hudo Assenco and Nelson Dornelas for CS166 class.
+  </h4>
+  <p>
+    This app uses an authentication system based on Tokens. The backend is made
+    with <a href="https://nodejs.org/en/">NodeJS</a> and the database with
+    <a href="https://www.mongodb.com/">MongoDB</a>. The Tokens are generated following
+    the <a href="https://jwt.io/">JSON Web Token standard</a> implemented by the library
+    <a href="https://github.com/auth0/node-jsonwebtoken">node-jsonwebtoken</a>.
+  </p>
+  <p>
+    The certificate is signed by <a href="https://letsencrypt.org/">Let's Encrypt</a>. The
+    server is hosted on an Amazon EC2 Instance running the <a href="https://www.nginx.com">Nginx</a>
+    web server.
+  </p>
+  <p>
+    The client is implemented using the beta version of Angularjs2 only for
+    learning purposes. The token is saved in the localStorage of the broswer and
+    later used in every request to the server to authenticate the user, making the server
+    stateless.
+  </p>
+
+  Security aspects:
+  <ul>
+      <li>HTTPS makes the connection more secure, preventing a man in the middle attack.</li>
+      <li>Tokens allows a stateless servers, that are more efficient and scalable</li>
+      <li>Tokens are not stored in cookies, preventing CSRF attacks. On the other hand, storing
+      tokens in the local storage of the browser makes it vulnerable to XSS attacks.</li>
+  </ul>
+
+  Source code for the project: <a href="https://github.com/hudovisk/cs166-server.git">https://github.com/hudovisk/cs166-server.git</a>
 
   <router-outlet></router-outlet>
 </div>

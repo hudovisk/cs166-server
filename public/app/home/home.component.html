@@ -1,7 +1,10 @@
-<p *ngIf="me">
+<p *ngIf="token">
   <label> Name: </label> {{me.name}}
   <label> Email: </label> {{me.email}}
+  <br>
+  <label> Token: </label> {{token}}
+
 </p>
-<p *ngIf="!me">
+<p *ngIf="!token">
   Please sign in.
 </p>
