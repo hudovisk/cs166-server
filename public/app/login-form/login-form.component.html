@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="form-signin">
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input #email="ngForm" ngControl="email" [(ngModel)]="user.email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+    Email is required
+  </div>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input #pwd="ngForm" ngControl="pwd"[(ngModel)]="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="" pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$">
+  <div [hidden]="pwd.valid || pwd.pristine" class="alert alert-danger">
+    Must be 6 to 16 characters long and have at least one number and one special character.
+  </div>
+  <button [disabled]="!loginForm.form.valid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <div *ngIf="wrongPwdEmail" class="alert alert-danger">
+    Invalid email/password.
+  </div>
+</form>

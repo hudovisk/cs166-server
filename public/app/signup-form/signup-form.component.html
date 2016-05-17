@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="form-signin">
+  <h2 class="form-signin-heading">Please sign up</h2>
+  <label for="inputName" class="sr-only">Name</label>
+  <input #name="ngForm" ngControl="name" [(ngModel)]="user.name" type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="">
+  <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+    Name is required
+  </div>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input #email="ngForm" ngControl="email" [(ngModel)]="user.email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="">
+  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+    Email is required
+  </div>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input #pwd="ngForm" ngControl="pwd" [(ngModel)]="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="" pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$">
+  <div [hidden]="pwd.valid || pwd.pristine" class="alert alert-danger">
+    Must be 6 to 16 characters long and have at least one number and one special character.
+  </div>
+  <button [disabled]="!loginForm.form.valid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <div *ngIf="success" class="alert alert-success">
+    Success! Please sign in now.
+  </div>
+  <div *ngIf="duplicateEmail" class="alert alert-danger">
+    Email already used. Please choose another email.
+  </div>
+</form>
